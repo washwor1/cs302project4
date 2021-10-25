@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
         j = backedge.at(j);
     }
     for (unsigned int i = moves.size()-1; i>=0; i--) {
-        cout << moves.at(i)/boardSize.second << ' ' << moves.at(i)%boardSize.second <<  '\n';
+        cout << moves.at(i)%boardSize.second << ' ' << moves.at(i)/boardSize.second <<  '\n';
     }
 
     
