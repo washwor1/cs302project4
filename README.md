@@ -28,6 +28,10 @@ Output
     Cost
     [(ROW_0, COL_0), ...]
 
+
+Compiling the generate_map:
+g++ -g -Wall -std=gnu++11 -o generate_map generate_map.cpp
+
 Benchmark:
 | N    	| Elapsed Time 	| Memory Usage (kybtes) 	|
 |------	|--------------	|-----------------------	|
