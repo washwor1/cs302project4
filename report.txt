@@ -18,6 +18,8 @@ Individual Contributions:
     Walter: Figuring out majority of the implementation of Dijkstra's Algorithm.
 
 Report:
-    1.
-    2. 
-    3.
+1. My representation was essentially an adjacency list as my grid would be considered individual nodes or vertices, the backedges were the edges, and the weights were the distances.
+
+2. For my implementation, I used 4 vectors and a multimap. Each of the vectors were used to keep track of 1 attribute of each node (distance,backedge,visited,weight/position) and the multimap was used to keep track of which paths were open and auto sort them by distance.
+
+3. After timing my implementation, it seems as if my time complexity is seems to be between O(V) and O(V^2). This seems accurate based on the reported time complexity on wikipedia being between (v+e)log(v) and v^2. For memory complexity it seems almost linear with respect to V which makes sense based on the fact that my vectors will take up V space no matter the grid.
