@@ -51,6 +51,7 @@ int main(int argc, char *argv[]) {
     //sets required values (in this case visited and distance, but in the main loop it will mark the backedge.)
     visited.at(it->second) = true;
     distance.at(it->second) = 0;
+<<<<<<< HEAD
 
     //checks each adjascent square to see if it exists and makes sure it has not yet been visited. If it passes these conditions, it gets added to the multimap.
     if (it->second%boardSize.second>0 && visited.at(it->second-1) != true) {
@@ -64,6 +65,10 @@ int main(int argc, char *argv[]) {
     }
     if (it->second/boardSize.second<boardSize.first && visited.at(it->second+boardSize.second) != true) {
         nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second+boardSize.second))->second, (it->second+boardSize.second)));
+=======
+    if (it->second%boardSize.second>0) {
+        
+>>>>>>> 22dba7abc01f9be110de01ecfc92bfb26aafd3df
     }
 
     //erases the visited node from the multimap

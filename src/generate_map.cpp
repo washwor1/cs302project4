@@ -1,6 +1,6 @@
 //Andy Zeng and Walter Ashworth
 //Github: https://github.com/washwor1/cs302project4
-//This program generate a nxn file that would be the input for the path finding lab
+//This program generates a nxn file that would be the input for the path finding lab
 
 #include <time.h>
 #include <iostream>
@@ -17,7 +17,7 @@ int main(){
     cin >> name;
     ofstream outfile;
     outfile.open(name);
-
+    //copy the given files to file in the values for each letter
     outfile << "6" << endl;
     outfile << "f 3" << endl;
     outfile << "g 1" << endl;
@@ -30,7 +30,7 @@ int main(){
     cin >> map_size;
 
     outfile << map_size << " " << map_size << endl;
-
+    //creates the map
     for (int i = 0; i < map_size; i++)
     {
         for (int j = 0; j < map_size - 1; j++)
@@ -41,7 +41,7 @@ int main(){
         random_number = rand() % 6;
         outfile << letter[random_number] << endl;
     }
-    
+    //outputs starting and ending position of the map
     outfile << "0 0" << endl;
     random_number = rand() % map_size;
     outfile << random_number << " ";
