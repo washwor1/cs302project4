@@ -1,6 +1,6 @@
 //Andy Zeng and Walter Ashworth
 //Github: https://github.com/washwor1/cs302project4
-//This program generate a nxn file that would be the input for the path finding lab
+//This program generates a nxn file that would be the input for the path finding lab
 
 #include <time.h>
 #include <iostream>
