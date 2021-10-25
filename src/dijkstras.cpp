@@ -69,16 +69,38 @@ int main(int argc, char *argv[]) {
     //erases the visited node from the multimap
     nodesToAdd.erase(it);
     
-    for (multimap<int,pair<int,int>>::iterator i = nodesToAdd.begin(); i != nodesToAdd.end(); ++i) {
-        cout << i->first << ' ' << i->second.first << '\n';
-    }
 
     //begin main dijkstras 
     //iteratively scans through each node using the outline from above.
-    // for(int i = 0; i<boardSize.first*boardSize.second-1; i++) {
-    //     visited.at(nodesToAdd.begin()->second) = true;
-    //     back
-    // }
+    for(int i = 0; i<boardSize.first*boardSize.second-1; i++) {
+        it = nodesToAdd.begin();
+        visited.at(it->second.first) = true;
+        distance.at(it->second.first) = it->first;
+        backedge.at(it->second.first) = it->second.second;
+        if (it->second.first%boardSize.second>0 && visited.at(it->second.first-1) != true) {
+            nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second.first-1))->second, make_pair((it->second.first-1), it->second.first)));
+        }
+        if (it->second.first%boardSize.second<boardSize.second-1 && visited.at(it->second.first+1) != true) {
+            nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second.first+1))->second, make_pair((it->second.first+1), it->second.first)));
+        }
+        if (it->second.first/boardSize.second>0 && visited.at(it->second.first-boardSize.second) != true) {
+            nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second.first-boardSize.second))->second, make_pair(it->second.first-boardSize.second, it->second.first)));
+        }
+        if (it->second.first/boardSize.second<boardSize.first && visited.at(it->second.first+boardSize.second) != true) {
+            nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second.first+boardSize.second))->second, make_pair(it->second.first+boardSize.second, it->second.first)));
+        }
+        nodesToAdd.erase(it);
+    }
+
+    vector<pair<int,int>> moves;
+    int j = boardSize.second*finish.second+finish.first;
+    cout << distance.at(j) << '\n';
+    while(backedge.at(j) != -1) {
+        moves.push_back(make_pair(backedge.at(j), j));
+    }
+    for (unsigned int i = moves.size()-1; i>=0; i--) {
+        cout << moves.at(i).first << ' ' << moves.at(i).second << '\n';
+    }
 
     
     return 0;
