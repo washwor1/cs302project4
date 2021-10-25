@@ -16,6 +16,7 @@ int main(int argc, char *argv[]) {
     map<char,int> values;
     vector<char> board;
     pair<int,int> boardSize, start, finish;
+    multimap<int,int> nodesToAdd;
 
     cin >> numInputs;
     //fills a map with the values of each character that will be in the grid
