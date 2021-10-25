@@ -45,8 +45,8 @@ int main(int argc, char *argv[]) {
     multimap<int,int>::iterator it = nodesToAdd.begin();
     visited.at(it->second) = true;
     distance.at(it->second) = 0;
-    if (it->second&boardSize.second>0) {
-        
+    if (it->second%boardSize.second>0) {
+
     }
     
 
