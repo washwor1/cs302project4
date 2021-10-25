@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
     visited.at(it->second) = true;
     distance.at(it->second) = 0;
     if (it->second%boardSize.second>0) {
-
+        
     }
     
 
