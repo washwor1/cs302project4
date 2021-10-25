@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
     if (it->second.first/boardSize.second>0 && visited.at(it->second.first-boardSize.second) != true) {
         nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second.first-boardSize.second))->second, make_pair(it->second.first-boardSize.second, it->second.first)));
     }
-    if (it->second.first/boardSize.second<boardSize.first-1 && visited.at(it->second.first+boardSize.second) != true) {
+    if (it->second.first/boardSize.second<boardSize.first && visited.at(it->second.first+boardSize.second) != true) {
         nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second.first+boardSize.second))->second, make_pair(it->second.first+boardSize.second, it->second.first)));
     }
 
@@ -72,7 +72,7 @@ int main(int argc, char *argv[]) {
 
     //begin main dijkstras 
     //iteratively scans through each node using the outline from above.
-    for(int i = 0; i < boardSize.first*boardSize.second-1; i++) {
+    while(visited.at(boardSize.second*finish.second+finish.first)==false) {
         it = nodesToAdd.begin();
         visited.at(it->second.first) = true;
         distance.at(it->second.first) = it->first;
