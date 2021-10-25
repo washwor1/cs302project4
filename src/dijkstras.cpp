@@ -74,7 +74,7 @@ int main(int argc, char *argv[]) {
     //iteratively scans through each node using the outline from above.
     while(visited.at(boardSize.second*finish.first+finish.second)==false) {
         it = nodesToAdd.begin();
-        if(visited.at(it->second.first)!=false) {
+        if(visited.at(it->second.first)!=true) {
             cout << it->second.first/boardSize.second << ' ' << it->second.first%boardSize.second << ' '<< it->second.second/boardSize.second << ' ' << it->second.second%boardSize.second << '\n';
             visited.at(it->second.first) = true;
             distance.at(it->second.first) = it->first;
