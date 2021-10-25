@@ -92,15 +92,15 @@ int main(int argc, char *argv[]) {
         nodesToAdd.erase(it);
     }
 
-    vector<pair<int,int>> moves;
+    vector<int> moves;
     int j = boardSize.second*finish.second+finish.first;
     cout << distance.at(j) << '\n';
-    while(backedge.at(j) != -1) {
-        moves.push_back(make_pair(backedge.at(j), j));
+    while(j != -1) {
+        moves.push_back(j);
         j = backedge.at(j);
     }
-    for (unsigned int i = moves.size()-1; i>=0; i--) {
-        cout << moves.at(i).first << ' ' << moves.at(i).second << '\n';
+    for (unsigned int i = moves.size()-1; i>0; i--) {
+        cout << moves.at(i)/boardSize.second << ' ' << moves.at(i)%boardSize.second <<  '\n';
     }
 
     
