@@ -86,7 +86,7 @@ int main(int argc, char *argv[]) {
         if (it->second.first/boardSize.second>0 && visited.at(it->second.first-boardSize.second) != true) {
             nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second.first-boardSize.second))->second, make_pair(it->second.first-boardSize.second, it->second.first)));
         }
-        if (it->second.first/boardSize.second<boardSize.first && visited.at(it->second.first+boardSize.second) != true) {
+        if (it->second.first/boardSize.second<boardSize.first-1 && visited.at(it->second.first+boardSize.second) != true) {
             nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second.first+boardSize.second))->second, make_pair(it->second.first+boardSize.second, it->second.first)));
         }
         nodesToAdd.erase(it);
