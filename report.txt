@@ -1,0 +1,14 @@
+Project 4 Members: Walter Ashworth and Andy Zeng
+Github Link: https://github.com/washwor1/cs302project4
+
+Benchmark Markup:
+
+Individual Contributions:
+    Andy: Created the generate_map.cpp, ran the benchmark, help on getting input from the files, and help on edge cases.
+
+    Walter: Figuring out majority of the implementation of Dijkstra's Algorithm.
+
+Report:
+    1.
+    2. 
+    3.
