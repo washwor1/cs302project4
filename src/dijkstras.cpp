@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     vector<bool> visited;
     vector<int> backedge, distance;
     pair<int,int> boardSize, start, finish;
-    multimap<int,int> nodesToAdd;
+    multimap<int,pair<int,int>> nodesToAdd;
 
     cin >> numInputs;
     //fills a map with the values of each character that will be in the grid
@@ -43,34 +43,34 @@ int main(int argc, char *argv[]) {
     //sets the first node to be the start and runs the first round of dijkstras to do specialty for first node (since its backedge remains null). This is also essentially how my main dijkstras will work with the addition of
     //backedge.
     //my comments on here are the same as the ones that I would use for the main loop
-    nodesToAdd.insert(make_pair(0, (boardSize.second*start.second+start.first)));
+    nodesToAdd.insert(make_pair(0, make_pair(boardSize.second*start.second+start.first, 0)));
     
     //finds the smallest distance in the multimap and saves a pointer to it
-    multimap<int,int>::iterator it = nodesToAdd.begin();
+    multimap<int,pair<int,int>>::iterator it = nodesToAdd.begin();
 
     //sets required values (in this case visited and distance, but in the main loop it will mark the backedge.)
-    visited.at(it->second) = true;
-    distance.at(it->second) = 0;
+    visited.at(it->second.first) = true;
+    distance.at(it->second.first) = 0;
 
     //checks each adjascent square to see if it exists and makes sure it has not yet been visited. If it passes these conditions, it gets added to the multimap.
-    if (it->second%boardSize.second>0 && visited.at(it->second-1) != true) {
-        nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second-1))->second, (it->second-1)));
+    if (it->second.first%boardSize.second>0 && visited.at(it->second.first-1) != true) {
+        nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second.first-1))->second, make_pair((it->second.first-1), it->second.first)));
     }
-    if (it->second%boardSize.second<boardSize.second-1 && visited.at(it->second+1) != true) {
-        nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second+1))->second, (it->second+1)));
+    if (it->second.first%boardSize.second<boardSize.second-1 && visited.at(it->second.first+1) != true) {
+        nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second.first+1))->second, make_pair((it->second.first+1), it->second.first)));
     }
-    if (it->second/boardSize.second>0 && visited.at(it->second-boardSize.second) != true) {
-        nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second-boardSize.second))->second, (it->second-boardSize.second)));
+    if (it->second.first/boardSize.second>0 && visited.at(it->second.first-boardSize.second) != true) {
+        nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second.first-boardSize.second))->second, make_pair(it->second.first-boardSize.second, it->second.first)));
     }
-    if (it->second/boardSize.second<boardSize.first && visited.at(it->second+boardSize.second) != true) {
-        nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second+boardSize.second))->second, (it->second+boardSize.second)));
+    if (it->second.first/boardSize.second<boardSize.first && visited.at(it->second.first+boardSize.second) != true) {
+        nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second.first+boardSize.second))->second, make_pair(it->second.first+boardSize.second, it->second.first)));
     }
 
     //erases the visited node from the multimap
     nodesToAdd.erase(it);
     
-    for (multimap<int,int>::iterator i = nodesToAdd.begin(); i != nodesToAdd.end(); ++i) {
-        cout << i->first << ' ' << i-> second << '\n';
+    for (multimap<int,pair<int,int>>::iterator i = nodesToAdd.begin(); i != nodesToAdd.end(); ++i) {
+        cout << i->first << ' ' << i->second.first << '\n';
     }
 
     //begin main dijkstras 
