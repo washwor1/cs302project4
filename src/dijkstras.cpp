@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
     //sets the first node to be the start and runs the first round of dijkstras to do specialty for first node (since its backedge remains null). This is also essentially how my main dijkstras will work with the addition of
     //backedge.
     //my comments on here are the same as the ones that I would use for the main loop
-    nodesToAdd.insert(make_pair(0, make_pair(boardSize.second*start.second+start.first, 0)));
+    nodesToAdd.insert(make_pair(0, make_pair(boardSize.second*start.first+start.second, 0)));
     
     //finds the smallest distance in the multimap and saves a pointer to it
     multimap<int,pair<int,int>>::iterator it = nodesToAdd.begin();
@@ -72,7 +72,7 @@ int main(int argc, char *argv[]) {
 
     //begin main dijkstras 
     //iteratively scans through each node using the outline from above.
-    while(visited.at(boardSize.second*finish.second+finish.first)==false) {
+    while(visited.at(boardSize.second*finish.first+finish.second)==false) {
         it = nodesToAdd.begin();
         visited.at(it->second.first) = true;
         distance.at(it->second.first) = it->first;
@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
     }
 
     vector<int> moves;
-    int j = boardSize.second*finish.second+finish.first;
+    int j = boardSize.second*finish.first+finish.second;
     cout << distance.at(j) << '\n';
     while(j != -1) {
         moves.push_back(j);
