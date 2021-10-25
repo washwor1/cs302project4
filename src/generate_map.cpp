@@ -15,7 +15,8 @@ int main(){
     char letter[6] = {'f','g','G','h','m','r'};
     cout << "File Name: ";
     cin >> name;
-    ofstream outfile (name);
+    ofstream outfile;
+    outfile.open(name);
 
     outfile << "6" << endl;
     outfile << "f 3" << endl;
@@ -34,17 +35,17 @@ int main(){
     {
         for (int j = 0; j < map_size - 1; j++)
         {
-            random_number = rand() % 6 + 1;
+            random_number = rand() % 6;
             outfile << letter[random_number] << " ";
         }
-        random_number = rand() % 6 + 1;
+        random_number = rand() % 6;
         outfile << letter[random_number] << endl;
     }
     
     outfile << "0 0" << endl;
-    random_number = rand() % map_size + 1;
+    random_number = rand() % map_size;
     outfile << random_number << " ";
-    random_number = rand() % map_size + 1;
+    random_number = rand() % map_size;
     outfile << random_number << endl;
 
     outfile.close();
