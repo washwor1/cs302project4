@@ -97,6 +97,7 @@ int main(int argc, char *argv[]) {
     cout << distance.at(j) << '\n';
     while(backedge.at(j) != -1) {
         moves.push_back(make_pair(backedge.at(j), j));
+        j = backedge.at(j);
     }
     for (unsigned int i = moves.size()-1; i>=0; i--) {
         cout << moves.at(i).first << ' ' << moves.at(i).second << '\n';
