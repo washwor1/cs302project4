@@ -72,7 +72,7 @@ int main(int argc, char *argv[]) {
 
     //begin main dijkstras 
     //iteratively scans through each node using the outline from above.
-    for(int i = 0; i<boardSize.first*boardSize.second-1; i++) {
+    while(visited.at(boardSize.second*finish.second+finish.first)==false) {
         it = nodesToAdd.begin();
         visited.at(it->second.first) = true;
         distance.at(it->second.first) = it->first;
