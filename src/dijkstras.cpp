@@ -1,6 +1,6 @@
 //Andy Zeng and Walter Ashworth
 //Github: https://github.com/washwor1/cs302project4
-//the dijsktras algorithm to complete which path would be the best path
+//dijsktras algorithm to compute the shortest path in a grid of weighted nodes.
 // dijsktras.cpp
 
 // Main Execution
@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
 
     //sets required values (in this case visited and distance, but in the main loop it will mark the backedge.)
     visited.at(it->second.first) = true;
-    distance.at(it->second.first) = 0;
+    distance.at(it->second.first) = values.find(board.at(it->second.first))->second;
 
     //checks each adjascent square to see if it exists and makes sure it has not yet been visited. If it passes these conditions, it gets added to the multimap.
     if (it->second.first%boardSize.second>0 && visited.at(it->second.first-1) != true) {
@@ -71,8 +71,15 @@ int main(int argc, char *argv[]) {
     
     //begin main dijkstras 
     //iteratively scans through each node using the outline from above.
-    while(visited.at(boardSize.second*finish.first+finish.second)==false) {
+    while(1) { //visited.at(boardSize.second*finish.first+finish.second)==false
         it = nodesToAdd.begin();
+        if (it->second.first == boardSize.second*finish.first+finish.second) {
+            visited.at(it->second.first) = true;
+            backedge.at(it->second.first) = it->second.second;
+            //distance.at(it->second.first) = distance.at(backedge.at(it->second.first));
+            distance.at(it->second.first) = it->first;
+            break;
+        }
         if(visited.at(it->second.first)!=true) {
             visited.at(it->second.first) = true;
             distance.at(it->second.first) = it->first;
