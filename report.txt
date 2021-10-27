@@ -4,13 +4,13 @@ Github Link: https://github.com/washwor1/cs302project4
 Benchmark Markup:
 | N    	| Elapsed Time 	| Memory Usage (kybtes) 	|
 |------	|--------------	|-----------------------	|
-| 10   	| 0:00.00      	| 1588                  	|
-| 20   	| 0:00.00      	| 1596                  	|
-| 50   	| 0:00.01      	| 1648                  	|
-| 100  	| 0:00.01      	| 1776                  	|
-| 200  	| 0:00.03      	| 2196                  	|
-| 500  	| 0:00.25      	| 4036                  	|
-| 1000 	| 0:01.14      	| 11392                 	|
+| 10   	| 0:00.03      	| 1588                  	|
+| 20   	| 0:00.03      	| 1596                  	|
+| 50   	| 0:00.03      	| 1648                  	|
+| 100  	| 0:00.03      	| 1776                  	|
+| 200  	| 0:00.04      	| 2196                  	|
+| 500  	| 0:00.49      	| 4036                  	|
+| 1000 	| 0:01.72      	| 11392                 	|
 
 Individual Contributions:
     Andy: Created the generate_map.cpp, ran the benchmark, help on getting input from the files, and help on edge cases.
