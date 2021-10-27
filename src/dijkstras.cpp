@@ -76,7 +76,8 @@ int main(int argc, char *argv[]) {
         if (it->second.first == boardSize.second*finish.first+finish.second) {
             visited.at(it->second.first) = true;
             backedge.at(it->second.first) = it->second.second;
-            distance.at(it->second.first) = distance.at(backedge.at(it->second.first));
+            //distance.at(it->second.first) = distance.at(backedge.at(it->second.first));
+            distance.at(it->second.first) = it->first;
             break;
         }
         if(visited.at(it->second.first)!=true) {
