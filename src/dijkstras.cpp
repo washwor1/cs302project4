@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
 
     //erases the visited node from the multimap
     nodesToAdd.erase(it);
-    cout << '\n';
+    
     //begin main dijkstras 
     //iteratively scans through each node using the outline from above.
     while(1) { //visited.at(boardSize.second*finish.first+finish.second)==false
@@ -80,11 +80,9 @@ int main(int argc, char *argv[]) {
             break;
         }
         if(visited.at(it->second.first)!=true) {
-            
             visited.at(it->second.first) = true;
             distance.at(it->second.first) = it->first;
             backedge.at(it->second.first) = it->second.second;
-            cout << it->second.first/boardSize.second << ' ' << it->second.first%boardSize.second << ' ' << backedge.at(it->second.first)/boardSize.second << ' ' << backedge.at(it->second.first)%boardSize.second << '\n';
             if (it->second.first%boardSize.second>0 && visited.at(it->second.first-1) != true) {
                 nodesToAdd.insert(make_pair(it->first+values.find(board.at(it->second.first-1))->second, make_pair((it->second.first-1), it->second.first)));
             }
